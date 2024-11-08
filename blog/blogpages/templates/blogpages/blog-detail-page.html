@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static wagtailimages_tags  wagtailcore_tags%}
+
+{% block content %}
+hello world
+{{ page.title }}
+{% if page.body %}
+{{ page.body|richtext }}
+{% endif %}
+{% endblock %}

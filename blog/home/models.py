@@ -4,7 +4,7 @@ from wagtail.models import Page
 from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField
 from wagtail.images import get_image_model
-
+from wagtail.documents import get_document_model
 
 class HomePage(Page):
     subtitle = models.CharField(max_length=100, blank=True, null=True)
@@ -18,8 +18,15 @@ class HomePage(Page):
         related_name='+',
         
     )
+    custom_document = models.ForeignKey(
+        get_document_model(),
+        blank=True,
+        on_delete=models.SET_NULL,
+        null=True
+    )
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
-        FieldPanel('image')
+        FieldPanel('image'),
+        FieldPanel('custom_document'),
     ]

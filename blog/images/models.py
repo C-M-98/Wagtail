@@ -3,8 +3,8 @@ from wagtail.images.models import Image, AbstractImage, AbstractRendition
 # Create your models here.
 
 class CustomImage(AbstractImage):
-    caption = models.CharField(max_length=255, blank=True)
-    
+    caption = models.CharField(max_length=255, blank=True);
+
     admin_form_fields = Image.admin_form_fields + ('caption',)
     
 class CustomRendition(AbstractRendition):
